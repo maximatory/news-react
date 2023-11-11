@@ -1,0 +1,31 @@
+.item {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.wrapper {
+    width: 64px;
+    height: 64px;
+    background-color: #f2f4f5;
+    flex-shrink: 0;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.title {
+    font-size: 14px;
+}
+
+.extra {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6C7072;
+}
