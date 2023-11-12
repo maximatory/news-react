@@ -3,7 +3,6 @@ import Image from '../Image/Image';
 import {formatTimeAgo} from '../../helpers/formatTimeAgo';
 
 export default function NewsBanner({item}) {
-    console.log(item.title)
     return (
         <div className={styles.banner}>
             <Image image={item?.image}/>
