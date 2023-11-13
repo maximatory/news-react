@@ -7,6 +7,8 @@ import Skeleton from '../../components/Skeleton/Skeleton'
 import Pagination from '../../components/Pagination/Pagination'
 import { getCategories } from '../../api/apiNews'
 import Categories from '../../components/Categories/Categories'
+import Search from '../../components/Search/Search'
+import { useDebounce } from '../../helpers/hooks/useDebounce'
 
 export default function Main() {
   const [news, setNews] = useState([])
@@ -16,6 +18,8 @@ export default function Main() {
   const pageSize = 10
   const [categories, setCategories] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('All')
+  const [keywords, setKeywords] = useState('')
+  const debounceKeywords = useDebounce(keywords, 1500)
   
   const fetchNews = async (currentPage)=>{
     try {
@@ -24,7 +28,8 @@ export default function Main() {
         {
           page_number: currentPage, 
           page_size: pageSize, 
-          category: selectedCategory === 'All' ? null : selectedCategory
+          category: selectedCategory === 'All' ? null : selectedCategory,
+          keywords: debounceKeywords
         }
       ) 
       setNews(response.news)
@@ -49,10 +54,12 @@ export default function Main() {
   const handlePageClick = (index)=>{
     setCurrentPage(index)
   }
+  
+  
 
   useEffect(()=>{
     fetchNews(currentPage, pageSize)
-  }, [currentPage, selectedCategory])
+  }, [currentPage, selectedCategory, debounceKeywords])
 
   const fetchCategories = async ()=>{
     try {
@@ -64,13 +71,16 @@ export default function Main() {
   }
   
 
+
   useEffect(()=>{
     fetchCategories()
   },[])
 
+
   return (
     <main className={styles.main}>
         <Categories categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
+        <Search keywords={keywords} setKeywords={setKeywords}/>
         {news.length && !isLoading ? <NewsBanner item={news[0]}/> : <Skeleton count={1} type='banner'/>}
         <Pagination currentPage={currentPage} totalPage={totalPage} handleNextPage={handleNextPage} handlePreviousPage={handlePreviousPage} handlePageClick={handlePageClick}/>
         { !isLoading ? <NewsList news={news}/> : <Skeleton count={10} type='item'/>}
