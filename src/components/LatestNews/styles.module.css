@@ -3,7 +3,12 @@
     flex-direction: column;
     width: 100%;
     gap: 32px;
-    max-height: 1200px;
-    overflow-y: auto;
+    box-sizing: border-box;
   }
   
+  @media (min-width: 768px){
+    .section{
+      overflow-y: auto;
+      max-height: 1200px;
+    }
+  }
