@@ -1,6 +1,13 @@
+import { DirectionType, SkeletonType } from '../../interfaces/interfaxes'
 import styles from './styles.module.css'
 
-export default function Skeleton({count=1, type='banner', direction}) {
+interface Props {
+  count?: number
+  type?: SkeletonType
+  direction?: DirectionType
+}
+
+export default function Skeleton({count=1, type='banner', direction='column'}:Props) {
   return (
     <>
         {count > 1 ? 

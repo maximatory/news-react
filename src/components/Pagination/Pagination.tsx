@@ -1,6 +1,8 @@
+import { IPaginationProps } from '../../interfaces/interfaxes'
 import styles from './styles.module.css'
 
-export default function Pagination({ currentPage, totalPage, handleNextPage, handlePreviousPage, handlePageClick }) {
+
+export default function Pagination({ currentPage, totalPage, handleNextPage, handlePreviousPage, handlePageClick }:IPaginationProps) {
     return (
         <div className={styles.pagination}>
             <button onClick={handlePreviousPage} className={styles.arrow} disabled={currentPage <= 1 }>❮</button>

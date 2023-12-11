@@ -1,7 +1,12 @@
 import { formatTimeAgo } from '../../helpers/formatTimeAgo';
 import styles from './styles.module.css'
+import { INews } from '../../interfaces/interfaxes';
 
-export default function NewsItem({item}) {
+interface Props {
+    item: INews;
+}
+
+export default function NewsItem({item}: Props) {
     return (
         <li className={styles.item}>
             <div className={styles.wrapper} style={{backgroundImage: `url(${item.image})`}}></div>
