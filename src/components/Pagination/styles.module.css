@@ -13,6 +13,19 @@
     background-color: #fff;
 }
 
+.pagination.dark .pageButton,
+.pagination.dark .arrow {
+  background-color: #23272f;
+  color: #f6f7f9;
+}
+
+.pagination.light .pageButton,
+.pagination.light .arrow {
+  background-color: white;
+  color: black;
+}
+
+
 .arrow:disabled, .pageButton:disabled {
     cursor: default;
 }
