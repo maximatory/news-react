@@ -43,7 +43,10 @@ export default function NewsByFilters() {
 
   return (
     <section className={styles.section}>
-      <NewsFilter filters={filters} changeFilter={changeFilter} />
+      <NewsFilter 
+        filters={filters} 
+        changeFilter={changeFilter} 
+      />
 
       <PaginationWrapper
         top
