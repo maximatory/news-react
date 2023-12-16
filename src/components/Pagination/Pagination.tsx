@@ -1,10 +1,12 @@
+import { useTheme } from '../../context/ThemeContext'
 import { IPaginationProps } from '../../interfaces/interfaxes'
 import styles from './styles.module.css'
 
 
 export default function Pagination({ currentPage, totalPage, handleNextPage, handlePreviousPage, handlePageClick }:IPaginationProps) {
+    const {isDark} = useTheme()
     return (
-        <div className={styles.pagination}>
+        <div className={`${styles.pagination} ${isDark ? styles.dark : styles.light}`}>
             <button onClick={handlePreviousPage} className={styles.arrow} disabled={currentPage <= 1 }>❮</button>
             <div className={styles.listButtons}>
                 {
